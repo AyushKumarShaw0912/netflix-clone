@@ -21,13 +21,13 @@ app.use("/api/v1/tv",TvRouter)
 app.use("/api/v1/search",searchRouter)
 
 const __dirname = path.resolve();
-console.log(process.env.NODE_ENV)
-if (process.env.NODE_ENV === "production") {
+
+
 	app.use(express.static(path.join(__dirname, "/frontend/dist")));
 
 	app.get("*", (req, res) => {
 		res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
 	});
-}
+
 export default app
 app.use(ErrorMiddleware)
